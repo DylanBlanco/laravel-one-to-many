@@ -44,7 +44,7 @@ class ProjectController extends Controller
         $newProject->description = $data['update_at'];
         $newProject->save();
 
-        return redirect()->route('projects.show', $newProject->id);
+        return redirect()->route('projects.index', $newProject->id);
     }
 
     /**
