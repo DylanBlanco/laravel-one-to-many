@@ -17,6 +17,10 @@ return new class extends Migration
             $table->string('author');
             $table->date('date_create')->nullable();
             $table->text('description')->nullable();
+            
+            $table->unsignedBigInteger('type_id')
+                  ->references('id')
+                  ->on('types');
             $table->timestamps();
         });
     }

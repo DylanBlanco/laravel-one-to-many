@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -15,7 +15,7 @@ class TypeController extends Controller
      */
     public function index()
     {
-        $projects = Type::all();
+        $types = Type::all();
 
         return view('types.index', compact('types'));
     }
@@ -36,8 +36,9 @@ class TypeController extends Controller
         $data = $request->all();
 
         $newType = new Type;
-        $newType->type = $data['type'];
+        $newType->name = $data['name'];
         $newType->description = $data['description'];
+        $newType->save();
 
         return redirect()->route('types.index', $newType->id);
     }
@@ -55,7 +56,7 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        //
+        return view('types.edit', compact('type'));
     }
 
     /**
@@ -63,7 +64,11 @@ class TypeController extends Controller
      */
     public function update(Request $request, Type $type)
     {
-        //
+        $data = $request->all();
+
+        $type->update($data);
+
+        return redirect()->route('types.index', $type->id);
     }
 
     /**
@@ -71,6 +76,8 @@ class TypeController extends Controller
      */
     public function destroy(Type $type)
     {
-        //
+        $type->delete();
+
+        return redirect()->route('types.index');
     }
 }
