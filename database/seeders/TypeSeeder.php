@@ -16,8 +16,7 @@ class TypeSeeder extends Seeder
     {
         Type::truncate();
 
-        for ($i=0; $i < 10; $i++) { 
-            
+        for ($i=0; $i < 10; $i++) {
             Type::create([
                 'name' => fake()->sentence(),
                 'description' => fake()->paragraph(),
