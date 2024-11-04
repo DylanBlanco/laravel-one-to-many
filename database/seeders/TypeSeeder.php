@@ -14,14 +14,14 @@ class TypeSeeder extends Seeder
      */
     public function run(): void
     {
-        // Type::truncate();
+        Type::truncate();
 
-        // for ($i=0; $i < 10; $i++) { 
+        for ($i=0; $i < 10; $i++) { 
             
-        //     Type::create([
-        //         'name' => fake()->sentence(),
-        //         'description' => fake()->paragraph(),
-        //     ]);
-        // }
+            Type::create([
+                'name' => fake()->sentence(),
+                'description' => fake()->paragraph(),
+            ]);
+        }
     }
 }

@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 
 // Models
 use App\Models\Project;
+use Illuminate\Support\Facades\Schema;
 
 class ProjectSeeder extends Seeder
 {
@@ -15,7 +16,10 @@ class ProjectSeeder extends Seeder
      */
     public function run(): void
     {
-        Project::truncate();
+        Schema::withoutForeignKeyConstraints(function() {
+            Project::truncate();
+        });
+        // Project::truncate();
 
         for ($i=0; $i < 20; $i++) { 
             
